@@ -25,6 +25,7 @@ function App() {
     .then((response) => {
       setNote((prevNote) => prevNote.concat(response));
     });
+    setNewNote('')
   };
 
   return (
