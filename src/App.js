@@ -43,7 +43,7 @@ function App() {
         })}
       </ul>
       <form onSubmit={handleSubmit}>
-        <input type="text" onChange={handleChange} />
+        <input type="text" onChange={handleChange} value={newNote}/>
         <button>add</button>
       </form>
     </div>
