@@ -18,8 +18,8 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const addNote = {
-      body: newNote,
-      userId: note.length + 1
+      content: newNote,
+      date: new Date()
     };
     newNoteAdd(addNote)
     .then((response) => {
@@ -37,6 +37,7 @@ function App() {
             <div key={note.id}>
               <li>
                 <h4>{note.content}</h4>
+                <p>{note.date}</p>
               </li>
             </div>
           );
