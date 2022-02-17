@@ -14,3 +14,11 @@ export const newNoteAdd = (addNote) => {
       return response.data;
     });
 };
+export const deleteNote = (id)=>{
+  console.log(id)
+  return axios
+    .delete("https://arcane-springs-44654.herokuapp.com/api/notes/"+id)
+    .then((response) => {
+      return response.data;
+    });
+}

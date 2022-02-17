@@ -1,20 +1,23 @@
 import { useState, useEffect} from "react";
-import { getNotes, newNoteAdd } from "./services/notes";
+import { getNotes, newNoteAdd,deleteNote } from "./services/notes";
 import './App.css';
 
 function App() {
   const [note, setNote] = useState([]);
   const [newNote, setNewNote] = useState("");
+  const [reload, setReload] = useState(true)
 
   useEffect(() => {
     getNotes().then((note) => {
+      setReload(false)
       setNote(note);
     });
-  }, []);
+  }, [reload]);
 
   const handleChange = (event) => {
     setNewNote(event.target.value);
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const addNote = {
@@ -27,6 +30,14 @@ function App() {
     });
     setNewNote('')
   };
+  
+  const handleClick = (id) =>{
+    setReload(true)
+    deleteNote(id)
+    .then(response=>{
+      console.log(response)
+    })
+  }
 
   return (
     <div>
@@ -38,6 +49,7 @@ function App() {
               <li>
                 <h4>{note.content}</h4>
                 <p>{note.date}</p>
+                <button onClick={()=>handleClick(note.id)}>delete</button>
               </li>
             </div>
           );
