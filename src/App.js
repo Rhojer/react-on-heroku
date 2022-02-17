@@ -36,7 +36,7 @@ function App() {
           return (
             <div key={note.id}>
               <li>
-                <h4>{note.body}</h4>
+                <h4>{note.content}</h4>
               </li>
             </div>
           );
